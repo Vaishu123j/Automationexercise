@@ -96,10 +96,26 @@ public class ProductTest extends BaseTest {
 		System.out.println(p.pbrand.isDisplayed());
 		System.out.println(p.pbrand.getText());
 	}
+	@Test(priority = 4)
+	public void ReviewonProduct() {
+		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
+		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
+		ProductPage p = PageFactory.initElements(driver, ProductPage.class);
+		p.productpage.click();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		System.out.println(p.viewproduct.isDisplayed() + ": " + p.viewproduct.getText());
+		p.product1.click();
+		System.out.println(p.review.isDisplayed() + ": " + p.review.getText());
+		p.name.sendKeys("Shalini");
+		p.email.sendKeys("testcheck789@gmail.com");
+		p.reviewtext.sendKeys("Good Product");
+		p.reviewbutton.click();
+		System.out.println(p.reviewmsg.isDisplayed() + ": " + p.reviewmsg.getText());
+		}
 	
 	
 	@AfterMethod
 	public void closeApp() {
-		driver.close();
+		driver.quit();
 	}
 }
