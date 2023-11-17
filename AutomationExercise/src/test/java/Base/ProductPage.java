@@ -26,7 +26,14 @@ public class ProductPage {
 	public WebElement searchtextbox;
 	@FindBy(xpath="//*[@id='submit_search']")
 	public  WebElement searchbtn;
-	
+	@FindBy(xpath="//*[text()='All Products']")public WebElement viewproduct;
+	@FindBy(xpath="//*[text()='Write Your Review']") public WebElement review;
+	@FindBy(xpath="//*[@id='name']")public WebElement name;
+	@FindBy(xpath="//*[@id='email']") public WebElement email; 
+	@FindBy(xpath="//*[@id='review']")public WebElement reviewtext; 
+	@FindBy(xpath="//*[@id='button-review']") public WebElement reviewbutton;
+	@FindBy(xpath="//*[text()='Thank you for your review.']")public WebElement reviewmsg;
+
 	
 }
 	
