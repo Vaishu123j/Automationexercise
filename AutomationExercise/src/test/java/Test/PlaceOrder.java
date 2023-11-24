@@ -1,7 +1,6 @@
 package Test;
 
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import Base.BaseTest;
 import Base.Login;
 import Base.PlaceOrderId;
@@ -23,8 +21,6 @@ public class PlaceOrder extends BaseTest {
 	@BeforeMethod
 	public void SetUp() {
 		driver = intialization("Chrome");
-		
-		
 	}
 
 	@Test(priority=1)
@@ -32,12 +28,12 @@ public class PlaceOrder extends BaseTest {
 		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
 		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
 		Login p = PageFactory.initElements(driver, Login.class);
-		p.login.click();
-		p.name.sendKeys("Test");
-		p.emailid.sendKeys("testcheck7899@gmail.com");
-		p.btn.click();
-		p.title.click();
-		p.psd.sendKeys("Test789@");
+		p.clickonLogin();
+		p.enternamefield("Test");
+		p.enteremailid("testcheck7899@gmail.com");
+		p.clickonbutton();
+		p.clickontitle();
+		p.clickonpassword("Test789@");
 		WebElement day = driver.findElement(By.id("days"));
 		Select obj1 = new Select(day);
 		obj1.selectByValue("29");
@@ -47,22 +43,22 @@ public class PlaceOrder extends BaseTest {
 		WebElement years = driver.findElement(By.id("years"));
 		Select obj3 = new Select(years);
 		obj3.selectByValue("1995");
-		p.chk1.click();
-		p.chk2.click();
-		p.firstname.sendKeys("Shalini");
-		p.lastname.sendKeys("Deol");
+		p.clickoncheckbox1();
+		p.clickoncheckbox2();
+		p.enterfirstnamek("Check1");
+		p.enterlastname("Check2");
 		p.company.sendKeys("Software Testing");
-		p.addrs1.sendKeys("789,near pheonix mall");
-		p.addrs2.sendKeys("Street no. 5, Software Testing");
+		p.enteraddress("789,near pheonix mall");
+		p.enteraddress2("Street no. 5, Software Testing");
 		WebElement country = driver.findElement(By.id("country"));
 		Select obj4 = new Select(country);
 		obj4.selectByVisibleText("India");
-		p.state.sendKeys("Maharahtra");
-		p.city.sendKeys("Pune");
-		p.zipcode.sendKeys("411048");
-		p.mobnumber.sendKeys("1234567891");
-		p.createaccbtn.click();
-		p.continu.click();
+		p.enterstate("Maharahtra");
+		p.entercity("Pune");
+		p.enterzipcode("411048");
+		p.entermobilenumber("1234567891");
+		p.clickoncontinuebutton();
+
 		boolean logged = driver.findElement(By.xpath("//*[contains(@class,'fa fa-user')]")).isDisplayed();
 		if(logged=true) {
 			System.out.println(logged + " "+ driver.findElement(By.xpath("//*[contains(@class,'fa fa-user')]")).getText());
@@ -76,8 +72,8 @@ public class PlaceOrder extends BaseTest {
 	public void addTocart() {
 		PlaceOrderId p =PageFactory.initElements(driver, PlaceOrderId.class);
 		ProductCart d= PageFactory.initElements(driver, ProductCart.class);
-		d.product1.click();
-		d.viewcart.click();
+		d.clickonproduct1();
+		d.clickonviewcart();
 		p.proceedToCheck.click();
 		
 	
@@ -106,7 +102,7 @@ public class PlaceOrder extends BaseTest {
 		@Test(priority=4)
 		public void deleteAccount() {
 		Login p = PageFactory.initElements(driver, Login.class);
-		p.delacc.click();
+		p.clickondelaccount();
 		boolean delact =driver.findElement(By.xpath("//*[text()='Account Deleted!']")).isDisplayed();
 		if(delact=true) {
 			System.out.println(delact + " "+ driver.findElement(By.xpath("//*[text()='Account Deleted!']")).getText());
@@ -114,11 +110,18 @@ public class PlaceOrder extends BaseTest {
 		else {
 			System.out.println("Not displayed");
 		}
-		p.continu.click();
+		p.clickoncontinuebutton();
 	}
+
 	@AfterTest
 	public void closeApp() {
 		driver.close();
 	}
 
 }
+
+	
+		
+		
+		
+	
