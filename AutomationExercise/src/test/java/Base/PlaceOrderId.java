@@ -41,6 +41,67 @@ public class PlaceOrderId {
 	@FindBy(xpath="//*[@class='modal-dialog modal-confirm']//following::*[text()='View Cart']")public WebElement viewcart;
 	@FindBy(xpath="//*[@href='/view_cart']") public WebElement cart;
 	
+	public void enternamefield(String Name) {
+	name.sendKeys(Name);
+	}
+	public void enteremailid(String Email) {
+	emailid.sendKeys(Email);
+	}
+	public void clickonbutton() {
+	btn.click();
+    }
+	public void clickontitle() {
+	title.click();
+    }
+	public void clickonDay() {
+	Day.click();
+    }
+	public void clickonpassword(String Password) {
+        psd.sendKeys(Password);
+    }
+	public void clickoncheckbox1() {
+	chk1.click();
+    }
+	public void clickoncheckbox2() {
+        chk2.click();
+    }
+	public void enterfirstnamek(String firstName) {
+        firstname.sendKeys(firstName);
+    }
+	public void enterlastname(String Lastname) {
+        lastname.sendKeys(Lastname);
+    }
+	public void enteraddress(String Address) {
+        addrs1.sendKeys(Address);
+    }
+	public void enteraddress2(String Address2) {
+        addrs2.sendKeys(Address2);
+    }
+	public void enterstate(String State){
+        state.sendKeys(State);
+    }
+	public void entercity (String City){
+       city.sendKeys(City);
+    }
+	public void enterzipcode(String Zipcode) {
+        zipcode.sendKeys(Zipcode);
+    }
+	public void entermobilenumber(String MobileNo) {
+	mobnumber .sendKeys(MobileNo);
+    }
+	public void clickoncreateaccount() {
+	createaccbtn.click();
+    }
+	public void clickoncontinuebutton() {
+	continu.click();
+    }
+	public void clickondelaccount() {
+        delacc.click();
+    }
+	public void clickoncartbutton() {
+        cart.click();
+    }
+
 	
 
 }
