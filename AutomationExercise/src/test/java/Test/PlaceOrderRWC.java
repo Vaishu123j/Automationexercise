@@ -25,7 +25,7 @@ public class PlaceOrderRWC extends BaseTest{
 	public void addToCart() {
 		PlaceOrderId p =PageFactory.initElements(driver, PlaceOrderId.class);
 		ProductPage e = PageFactory.initElements(driver, ProductPage.class);
-		e.product1.click();
+		e.clickonproduct1();
 		System.out.println("Product added to cart");
 		p.viewcart.click();
 		System.out.println("Viewed the cart");
@@ -37,12 +37,11 @@ public class PlaceOrderRWC extends BaseTest{
 		}
 		@Test(priority=2)
 		public void registerWhileCheckout() {
-			PlaceOrderId p =PageFactory.initElements(driver, PlaceOrderId.class);
-			
-	
+			PlaceOrderId p = PageFactory.initElements(driver, PlaceOrderId.class);
+
 			p.login.click();
-			p.name.sendKeys("Test");
-			p.emailid.sendKeys("testcheck7899@gmail.com");
+			p.enternamefield("Test");
+			p.enteremailid("testcheck7899@gmail.com");
 			p.btn.click();
 		
 		boolean eai = driver.findElement(By.xpath("//*[text()='Enter Account Information']")).isDisplayed();
@@ -65,18 +64,18 @@ public class PlaceOrderRWC extends BaseTest{
 		obj3.selectByValue("1995");
 		p.chk1.click();
 		p.chk2.click();
-		p.firstname.sendKeys("Shalini");
-		p.lastname.sendKeys("Deol");
+		p.enterfirstnamek("vaishu");
+		p.enterlastname("Deol");
 		p.company.sendKeys("Software Testing");
-		p.addrs1.sendKeys("789,near pheonix mall");
-		p.addrs2.sendKeys("Street no. 5, Software Testing");
+		p.enteraddress("789,near pheonix mall");
+		p.enteraddress2("Street no. 5, Software Testing");
 		WebElement country = driver.findElement(By.id("country"));
 		Select obj4 = new Select(country);
 		obj4.selectByVisibleText("India");
-		p.state.sendKeys("Maharahtra");
-		p.city.sendKeys("Pune");
-		p.zipcode.sendKeys("411048");
-		p.mobnumber.sendKeys("1234567891");
+		p.enterstate("Maharahtra");
+		p.entercity("Pune");
+		p.enterzipcode("411048");
+		p.entermobilenumber("1234567891");
 		p.createaccbtn.click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		boolean accc= driver.findElement(By.xpath("//*[text()='Account Created!']")).isDisplayed();
