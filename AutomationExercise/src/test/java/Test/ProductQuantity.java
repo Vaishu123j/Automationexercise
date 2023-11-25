@@ -63,4 +63,3 @@ public class ProductQuantity extends BaseTest {
 
 	}
 }
-
