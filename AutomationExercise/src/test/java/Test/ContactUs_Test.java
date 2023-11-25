@@ -24,32 +24,20 @@ public class ContactUs_Test extends BaseTest{
 	public void contact_us() throws Exception, Exception {
 		ContactUs p = PageFactory.initElements(driver, ContactUs.class);
 		p.clickContactUsLink();
-		boolean getintouch = driver.findElement(By.xpath("//*[text()='Get In Touch']")).isDisplayed();
-		if (getintouch = true) {
-			System.out
-					.println(getintouch + ": " + driver.findElement(By.xpath("//*[text()='Get In Touch']")).getText());
-		} else {
-			System.out.println("Not displayed");
-		}
-		p.enterMessage("xyz");
-		p.enterEmail("xtz@gmail.com");
-		p.enterSubject("product return");
-		p.enterMessage("I want to return this product");
-		p.clickSubmit();
+		p.VerifyGetInTouchTitle();
+		p.EnterAllDetailsofContactUs();
 		Alert a = driver.switchTo().alert();
 		a.accept();
-		boolean successmsg = driver.findElement(By.xpath("//*[@class='status alert alert-success']")).isDisplayed();
-		if (successmsg = true) {
-			System.out.println(successmsg + ": "
-					+ driver.findElement(By.xpath("//*[@class='status alert alert-success']")).getText());
-		} else {
-			System.out.println("Not displayed");
-		}
+		p.VerifySuccessMessage();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		p.clickHomePageButton();
 		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
 		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	}
+	@AfterMethod
+	public void TearDown() {
+		driver.quit();
 	}
 
 }
