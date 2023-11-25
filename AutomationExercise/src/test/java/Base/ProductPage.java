@@ -24,8 +24,9 @@ public class ProductPage {
 	@FindBy(xpath = "//*[@id='button-review']")WebElement reviewbutton;
 	@FindBy(xpath = "//*[text()='Thank you for your review.']")public WebElement reviewmsg;
 
-	public ProductPage(WebDriver driver) {
-		this.driver = driver;
+	public void verifyHomeTitle() {
+		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
+		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
 	}
 	public void verifyTitlesofTab() {
 		System.out.println(pname.isDisplayed());
@@ -42,11 +43,24 @@ public class ProductPage {
 		System.out.println(pbrand.getText());
 	}
 	public void verifyAllProductList() {
-		boolean allproducts = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2")).isEnabled();
-		System.out.println(allproducts + ": "+ driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2")).getText());
-		List<WebElement> productlist = driver.findElements(By.xpath("//*[@alt='ecommerce website products']/following::p"));
+		boolean allproducts = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2"))
+				.isEnabled();
+		System.out.println(allproducts + ": "
+				+ driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2")).getText());
+		List<WebElement> productlist = driver
+				.findElements(By.xpath("//*[@alt='ecommerce website products']/following::p"));
 		for (WebElement plist : productlist) {
-		       System.out.println(plist.getText());
+			System.out.println(plist.getText());
+		}
+	}
+	public void VerifySearchproductTitle() {
+		boolean searchedproduct = driver.findElement(By.xpath("//*[text()='Searched Products']")).isDisplayed();
+		if (searchedproduct = true) {
+			System.out.println(
+					searchedproduct + ": " + driver.findElement(By.xpath("//*[text()='Searched Products']")).getText());
+		} else {
+			System.out.println("Not displayed");
+
 		}
 	}
 
