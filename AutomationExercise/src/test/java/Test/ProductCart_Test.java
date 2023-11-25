@@ -36,7 +36,6 @@ public class ProductCart_Test extends BaseTest{
 		p.clickonproductpage();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(800,960)", "");
-
 		driver.manage().timeouts().implicitlyWait(2000, TimeUnit.SECONDS);
 		p.clickonproduct1();
 		System.out.println("Product1 added in the cart");
@@ -59,7 +58,6 @@ public class ProductCart_Test extends BaseTest{
 		Assert.assertEquals(item2, true);
 		System.out.println(item2);
 		ProductCart p = PageFactory.initElements(driver, ProductCart.class);
-
 		System.out.println(p.p1price.isDisplayed() + ": Item1 price is Displayed");
 		System.out.println(p.p1quantity.isDisplayed() + ": Item2 price is Displayed");
 		System.out.println(p.item1totalprice.isDisplayed() + ": Item1 quantity is Displayed");
@@ -79,7 +77,7 @@ public class ProductCart_Test extends BaseTest{
 
 	@AfterClass
 	public void closeApp() {
-		driver.close();
+		driver.quit();
 	}
 
 }
