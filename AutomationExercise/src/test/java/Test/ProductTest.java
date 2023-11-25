@@ -29,8 +29,7 @@ public class ProductTest extends BaseTest {
 
 	@Test(priority = 1)
 	public void productpage() {
-		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
-		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
+        p.verifyHomeTitle();
 		ProductPage p = PageFactory.initElements(driver, ProductPage.class);
 		p.clickonproduct();
 //	    Alert s = driver.switchTo().alert();
@@ -38,15 +37,7 @@ public class ProductTest extends BaseTest {
 //      	System.out.println(sd);
 //	    s.dismiss();
 		driver.manage().timeouts().implicitlyWait(1000, TimeUnit.SECONDS);
-		boolean allproducts = driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2"))
-				.isEnabled();
-		System.out.println(allproducts + ": "
-				+ driver.findElement(By.xpath("/html/body/section[2]/div[1]/div/div[2]/div/h2")).getText());
-		List<WebElement> productlist = driver
-				.findElements(By.xpath("//*[@alt='ecommerce website products']/following::p"));
-		for (WebElement plist : productlist) {
-			System.out.println(plist.getText());
-		}
+		p.verifyAllProductList();
 	}
 
 	@Test(priority = 2)
@@ -60,14 +51,7 @@ public class ProductTest extends BaseTest {
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		je.executeScript("window.scrollBy(500, 500);");
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-		boolean searchedproduct = driver.findElement(By.xpath("//*[text()='Searched Products']")).isDisplayed();
-		if (searchedproduct = true) {
-			System.out.println(
-					searchedproduct + ": " + driver.findElement(By.xpath("//*[text()='Searched Products']")).getText());
-		} else {
-			System.out.println("Not displayed");
-
-		}
+		p.VerifySearchproductTitle();
 	}
 
 	@Test(priority = 3)
@@ -81,30 +65,15 @@ public class ProductTest extends BaseTest {
 		p.clickonproduct1();
 
 		boolean productdetails = driver.findElement(By.xpath("//*[text()='Blue Top']")).isEnabled();
-
 		System.out.println(productdetails + ": " + driver.findElement(By.xpath("//*[text()='Blue Top']")).getText());
 
-		System.out.println(p.pname.isDisplayed());
-		System.out.println(p.pname.getText());
-		System.out.println(p.pcategory.isDisplayed());
-		System.out.println(p.pcategory.getText());
-		System.out.println(p.pprice.isDisplayed());
-		System.out.println(p.pprice.getText());
-//		Alert a = driver.switchTo().alert();
-//		a.dismiss();
-		System.out.println(p.pavailability.isDisplayed());
-		System.out.println(p.pavailability.getText());
-		System.out.println(p.pconditions.isDisplayed());
-		System.out.println(p.pconditions.getText());
-		System.out.println(p.pbrand.isDisplayed());
-		System.out.println(p.pbrand.getText());
+		p.verifyTitlesofTab();
 		driver.close();
 	}
 
 	@Test(priority = 4)
 	public void ReviewonProduct() {
-		boolean homepage = driver.findElement(By.xpath("//*[text()=' Home']")).isEnabled();
-		System.out.println(homepage + ": " + driver.findElement(By.xpath("//*[text()=' Home']")).getText());
+		p.verifyHomeTitle();
 		ProductPage p = PageFactory.initElements(driver, ProductPage.class);
 		p.clickonproductpage();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -123,4 +92,3 @@ public class ProductTest extends BaseTest {
 		driver.quit();
 	}
 }
-
